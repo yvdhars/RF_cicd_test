@@ -1,4 +1,4 @@
-from src.data_clean import data_load_clean_strategy
+from data_clean import data_load_clean_strategy 
 import pandas as pd
 import numpy as np
 
