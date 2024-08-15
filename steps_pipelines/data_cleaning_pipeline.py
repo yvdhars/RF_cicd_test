@@ -1,6 +1,10 @@
-from data_clean import data_load_clean_strategy 
+import sys
+import os
+sys.path.append(os.path.abspath('src'))
 import pandas as pd
 import numpy as np
+import src
+from src.data_clean import data_load_clean_strategy 
 
 class DataCleanLoad:
     def __init__(self, df_path: str, parser_strategy):
@@ -15,8 +19,8 @@ class DataCleanLoad:
 
 
 def load(df_path:str = "test_assets/titanic.csv") -> None:
-
-    run = DataCleanLoad(df_path=df_path, parser_strategy=data_load_clean_strategy)
+    parser_strategy=data_load_clean_strategy(df_path=df_path)
+    run = DataCleanLoad(df_path=df_path, parser_strategy=parser_strategy)
     df = run.CleanData_methoode()
 
     print(f"shape of the df is {df.shape}")

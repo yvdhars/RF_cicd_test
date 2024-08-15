@@ -1,1 +1,1 @@
-print("this is to indicate the train workflow is completed")
+print("this is to tell that training script is running")

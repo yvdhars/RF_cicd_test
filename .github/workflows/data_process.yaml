@@ -22,9 +22,9 @@ jobs:
       run: |
         pip install -r requirements.txt
 
-    - name: Run training
+    - name: Run cleaning data
       run: |
-        python3 pipelines/data_cleaning_pipeline.py
+        python3 clean.py
 
   RF_train_Pipeline:
     runs-on: ubuntu-latest
