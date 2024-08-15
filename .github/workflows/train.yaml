@@ -1,0 +1,31 @@
+name: RF Pipeline
+
+on:
+  push:
+    branches:
+      - test_v0.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run training
+      run: |
+        python3 main.py
+
+    # - name: Run tests
+    #   run: |
+    #     pytest tests/
