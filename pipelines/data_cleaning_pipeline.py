@@ -21,3 +21,7 @@ def load(df_path:str = "test_assets/titanic.csv") -> None:
 
     print(f"shape of the df is {df.shape}")
 
+
+if __name__ == "__main__":
+    load()
+

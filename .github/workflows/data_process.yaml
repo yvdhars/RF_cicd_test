@@ -24,15 +24,15 @@ jobs:
 
     - name: Run training
       run: |
-        python3 src/data_clean.py
+        python3 pipelines/data_cleaning_pipeline.py
 
-train:
-  runs-on: ubuntu-latest
-  needs: build
-  steps:
-      - name: RF_train_Pipeline
-      
-        run: echo "Build completed. Notifying..."
+  RF_train_Pipeline:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+        - name: RF_train_Pipeline
+        
+          run: echo "Build completed. Notifying..."
 
     # - name: Run tests
     #   run: |
