@@ -26,7 +26,7 @@ jobs:
       run: |
         python3 clean.py
 
-  RF_train_Pipeline:
+  train:
     runs-on: ubuntu-latest
     needs: build
     steps:
