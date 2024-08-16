@@ -2,6 +2,9 @@
 name: RF_train_Pipeline
 
 on:
+  push:
+    branches:
+      - test_v0.1
   workflow_run:
     workflows: ["RF_data_process_Pipeline"]
     types:
