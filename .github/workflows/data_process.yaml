@@ -1,3 +1,4 @@
+# .github/workflows/rf_data_process_pipeline.yml
 name: RF_data_process_Pipeline
 
 on:
@@ -25,15 +26,3 @@ jobs:
     - name: Run cleaning data
       run: |
         python3 clean.py
-
-  train:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-        - name: RF_train_Pipeline
-        
-          run: echo "Build completed. Notifying..."
-
-    # - name: Run tests
-    #   run: |
-    #     pytest tests/

@@ -1,3 +1,4 @@
+# .github/workflows/rf_train_pipeline.yml
 name: RF_train_Pipeline
 
 on:
@@ -5,9 +6,6 @@ on:
     workflows: ["RF_data_process_Pipeline"]
     types:
       - completed
-  # push:
-  #   branches:
-  #     - test_v0.1
 
 jobs:
   build:
@@ -30,6 +28,7 @@ jobs:
       run: |
         python3 main.py
 
+    # Uncomment if you have tests and want to run them
     # - name: Run tests
     #   run: |
     #     pytest tests/
