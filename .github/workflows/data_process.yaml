@@ -2,6 +2,7 @@
 name: RF_data_process_Pipeline
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - test_v0.1
