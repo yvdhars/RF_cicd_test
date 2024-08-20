@@ -1,6 +1,10 @@
+import sys
+import os
+# sys.path.append(os.path.abspath('src'))
 import pandas as pd
 import numpy as np
-from .. src.data_clean import data_load_clean_strategy 
+import src
+from src.data_clean import data_load_clean_strategy 
 
 class DataCleanLoad:
     def __init__(self, df_path: str, parser_strategy):
