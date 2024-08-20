@@ -1,9 +1,10 @@
-# .github/workflows/rf_data_process_pipeline.yml
-name: RF_data_process_Pipeline
+name: CI/CD Pipeline
 
 on:
-  workflow_dispatch:
   push:
+    branches:
+      - test_v0.1
+  pull_request:
     branches:
       - test_v0.1
 
@@ -12,18 +13,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.8'
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.8'
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          chmod +x scripts/setup_env.sh
+          ./scripts/setup_env.sh
 
-    - name: Run cleaning data
-      run: |
-        python3 clean.py
+      - name: Run data cleaning
+        run: |
+          chmod +x scripts/run_data_clean.sh
+          ./scripts/run_data_cleaning.sh
+
+      - name: Train model
+        run: |
+          chmod +x scripts/run_training.sh
+          ./scripts/train.sh
+
+      # - name: Run tests
+      #   run: |
+      #     chmod +x scripts/run_tests.sh
+      #     ./scripts/run_tests.sh
