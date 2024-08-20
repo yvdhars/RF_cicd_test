@@ -1,4 +1,4 @@
-from steps_pipelines.data_cleaning_pipeline import load
+from src.data_cleaning_pipeline import load
 
 
 

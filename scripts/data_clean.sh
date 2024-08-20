@@ -4,4 +4,4 @@
 set -e
 
 # Run the data cleaning script
-python steps_pipelines/data_cleaning_pipeline.py
+python src/data_cleaning_pipeline.py
