@@ -28,8 +28,8 @@ jobs:
 
       - name: Run data cleaning
         run: |
-          chmod +x scripts/run_data_clean.sh
-          ./scripts/run_data_cleaning.sh
+          chmod +x scripts/data_clean.sh
+          ./scripts/data_clean.sh
 
       - name: Train model
         run: |
