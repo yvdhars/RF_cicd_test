@@ -4,7 +4,7 @@ import os
 import pandas as pd
 import numpy as np
 # import src
-from .data_clean import data_load_clean_strategy 
+from data_clean import data_load_clean_strategy 
 
 class DataCleanLoad:
     def __init__(self, df_path: str, parser_strategy):
