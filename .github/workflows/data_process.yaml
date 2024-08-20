@@ -1,6 +1,6 @@
 name: CI/CD Pipeline
 
-on:
+'on':
   push:
     branches:
       - test_v0.1
@@ -33,9 +33,8 @@ jobs:
 
       - name: Train model
         run: |
-          chmod +x scripts/run_training.sh
+          chmod +x scripts/train.sh
           ./scripts/train.sh
-
       # - name: Run tests
       #   run: |
       #     chmod +x scripts/run_tests.sh
