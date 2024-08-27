@@ -1,38 +1,38 @@
-from abc import abstractmethod, ABC
+from abc import ABC, abstractmethod
 import pandas as pd
-import numpy as np
 
-class data_load_clean_abstract(ABC):
-    """
-    creating abstract class to load data from different sources
-    """
+class DataLoadCleanAbstract(ABC):
+    """Abstract base class for data loading and cleaning strategies."""
 
     @abstractmethod
-    def load_data(self,df_path: str)-> None:
-        return None
+    def load_data(self) -> pd.DataFrame:
+        """Load data from the specified source."""
+        pass
     
     @abstractmethod
-    def clean_data(self,df: pd.DataFrame)-> None:
-        return None
-    
+    def clean_data(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Clean the provided DataFrame."""
+        pass
 
-
-class data_load_clean_strategy(data_load_clean_abstract):
+class DataLoadCleanStrategy(DataLoadCleanAbstract):
+    """Concrete strategy for loading and cleaning data."""
 
     def __init__(self, df_path: str):
         self.df_path = df_path
 
     def load_data(self) -> pd.DataFrame:
-        df = pd.DataFrame()
+        """Load data from file based on its extension."""
         if self.df_path.endswith(".xlsx"):
-            df = pd.read_excel(self.df_path) 
+            return pd.read_excel(self.df_path)
         elif self.df_path.endswith(".csv"):
-            df = pd.read_csv(self.df_path)
+            return pd.read_csv(self.df_path)
         else:
-            print("not able to load and clean data from the given input file please check the input")
-        return df
-    
-    def clean_data(self,df: pd.DataFrame) -> pd.DataFrame:
+            raise ValueError("Unsupported file format. Please provide a .csv or .xlsx file.")
+
+    def clean_data(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Clean the DataFrame by dropping NA values and applying specific transformations."""
         df.dropna(inplace=True)
-        df.reset_index(inplace=True)
+        df.reset_index(drop=True, inplace=True)
+        df['class'].replace({'Iris-setossa': 'Iris-setosa', 'versicolor': 'Iris-versicolor'}, inplace=True)
+        df = df[~((df['sepal_width_cm'] < 2.5) & (df['petal_width_cm'] < 0.5))]
         return df

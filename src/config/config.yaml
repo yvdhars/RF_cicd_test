@@ -1,0 +1,12 @@
+data:
+
+input_file : 'test_assets/IRIS_DATA.csv'
+delimiter : ','
+
+
+
+
+ModelAssets:
+dir: 'model_assets'
+
+

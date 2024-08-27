@@ -3,3 +3,6 @@ numpy
 mlflow
 scikit-learn
 faker
+pyyaml 
+python-box
+-e .

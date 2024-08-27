@@ -1,31 +1,28 @@
-import sys
-import os
-# sys.path.append(os.path.abspath('src'))
 import pandas as pd
-import numpy as np
-# import src
-from data_clean import data_load_clean_strategy 
+from pathlib import Path
+from components.constants import config
+from data_clean import DataLoadCleanStrategy
 
 class DataCleanLoad:
-    def __init__(self, df_path: str, parser_strategy):
-        self.df_path = df_path
+    def __init__(self, parser_strategy: DataLoadCleanStrategy = DataLoadCleanStrategy(config.data.input_file)):
+        self.df_path = Path(config.data.input_file)
         self.parser_strategy = parser_strategy
-    
-    def LoadData_method(self):
+
+    def load_data(self) -> pd.DataFrame:
+        """Load data using the provided parser strategy."""
         return self.parser_strategy.load_data()
-    
-    def CleanData_methoode(self):
-        return self.parser_strategy.clean_data(df = self.LoadData_method())
 
+    def clean_data(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Clean the data using the provided parser strategy."""
+        return self.parser_strategy.clean_data(df)
 
-def load(df_path:str = "test_assets/titanic.csv") -> None:
-    parser_strategy=data_load_clean_strategy(df_path=df_path)
-    run = DataCleanLoad(df_path=df_path, parser_strategy=parser_strategy)
-    df = run.CleanData_methoode()
-
-    print(f"shape of the df is {df.shape}")
-
+    def main(self) -> pd.DataFrame:
+        """Main method to load and clean data, and print the DataFrame shape."""
+        df = self.load_data()
+        cleaned_df = self.clean_data(df)
+        print(f"Shape of the cleaned DataFrame: {cleaned_df.shape}")
+        return cleaned_df
 
 if __name__ == "__main__":
-    load()
-
+    pipeline = DataCleanLoad()
+    pipeline.main()

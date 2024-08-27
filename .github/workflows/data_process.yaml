@@ -22,19 +22,15 @@ jobs:
           python-version: '3.8'
 
       - name: Install dependencies
-        run: |
-          chmod +x scripts/setup_env.sh
-          ./scripts/setup_env.sh
+        run: pip install -r requirements.txt
 
       - name: Run data cleaning
-        run: |
-          chmod +x scripts/data_clean.sh
-          ./scripts/data_clean.sh
+        run: python main.py
 
-      - name: Train model
-        run: |
-          chmod +x scripts/train.sh
-          ./scripts/train.sh
+      # - name: Train model
+      #   run: |
+      #     chmod +x scripts/train.sh
+      #     ./scripts/train.sh
       # - name: Run tests
       #   run: |
       #     chmod +x scripts/run_tests.sh
