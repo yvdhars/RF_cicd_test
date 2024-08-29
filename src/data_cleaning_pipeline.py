@@ -1,7 +1,10 @@
 import pandas as pd
+import os
 from pathlib import Path
-from components.constants import config
+from components.constants import config, start_time
 from data_clean import DataLoadCleanStrategy
+
+cwd = os.getcwd()
 
 class DataCleanLoad:
     def __init__(self, parser_strategy: DataLoadCleanStrategy = DataLoadCleanStrategy(config.data.input_file)):
@@ -21,6 +24,7 @@ class DataCleanLoad:
         df = self.load_data()
         cleaned_df = self.clean_data(df)
         print(f"Shape of the cleaned DataFrame: {cleaned_df.shape}")
+        cleaned_df.to_csv(os.path.join(cwd, config.ModelAssets.dir, start_time, "processed.csv"))
         return cleaned_df
 
 if __name__ == "__main__":

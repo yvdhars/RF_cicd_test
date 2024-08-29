@@ -1,5 +1,12 @@
 import yaml
 from box import Box
+from datetime import datetime
+import os
+from pathlib import Path
+
+start_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+cwd = os.getcwd()
+
 
 class YamlLoader:
     def __init__(self, file_path):
@@ -17,6 +24,25 @@ class YamlLoader:
         return self.data
 
 
-config = YamlLoader('src/config/config.yaml')
 
-print(config.data.input_file)
+def create_folders(folders):
+    """
+    Create folders and subfolders if they do not exist.
+    
+    :param folders: List of folder paths to create.
+    """
+    for folder in folders:
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+            print(f"Created folder: {folder}")
+        else:
+            print(f"Folder already exists: {folder}")
+
+config = YamlLoader('src/config/config.yaml')
+config = config.data
+required_folders = [os.path.join(cwd, Path(config.ModelAssets.common_dir.replace("start_time", start_time)))]
+create_folders(required_folders)
+
+
+
+print(config.data.input_file, config.data)

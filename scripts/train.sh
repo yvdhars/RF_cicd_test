@@ -4,4 +4,4 @@
 set -e
 
 # Run the training script
-python src/training_pipeline.py
+python main.py

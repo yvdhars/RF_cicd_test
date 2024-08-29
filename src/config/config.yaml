@@ -1,12 +1,16 @@
 data:
-
-input_file : 'test_assets/IRIS_DATA.csv'
-delimiter : ','
+  input_file : 'test_assets/IRIS_DATA.csv'
+  delimiter : ','
 
 
 
 
 ModelAssets:
-dir: 'model_assets'
+  dir: 'model_assets'
+  common_dir : 'model_assets/start_time'
 
 
+ModelParametrs:
+  n_estimators: 100
+  max_depth: 10
+  random_state: 42
