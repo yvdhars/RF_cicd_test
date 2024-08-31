@@ -3,10 +3,10 @@ name: CI/CD Pipeline
 'on':
   push:
     branches:
-      - test_v0.1
+      - main
   pull_request:
     branches:
-      - test_v0.1
+      - main
 
 jobs:
   build:
@@ -24,8 +24,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run data cleaning
-        run: python main.py
+      # - name: Run data cleaning
+      #   run: python main.py
 
       # - name: Train model
       #   run: |

@@ -81,7 +81,10 @@ class TrainModel_rf(TrainModel_abstract):
     def predict(self, X_test: Union[pd.DataFrame, pd.Series]) -> Union[pd.Series, np.array]:
         return self.model.predict(X_test)
 
-    def test_model(self, y_test: pd.Series, predictions: pd.Series) -> None:
+    def test_model(self, y_test: pd.Series, predictions: pd.Series) -> float:
         accuracy = accuracy_score(y_test, predictions)
         print(f"Accuracy: {accuracy:.2f}")
-        return None
+        return accuracy
+    
+    def get_model(self) -> Union[RegressorMixin, ClassifierMixin]:
+        return self.model

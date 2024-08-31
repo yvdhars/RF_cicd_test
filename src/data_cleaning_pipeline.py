@@ -24,7 +24,7 @@ class DataCleanLoad:
         df = self.load_data()
         cleaned_df = self.clean_data(df)
         print(f"Shape of the cleaned DataFrame: {cleaned_df.shape}")
-        cleaned_df.to_csv(os.path.join(cwd, config.ModelAssets.dir, start_time, "processed.csv"))
+        cleaned_df.to_csv(os.path.join(cwd, config.ModelAssets.dir, "processed.csv"))
         return cleaned_df
 
 if __name__ == "__main__":

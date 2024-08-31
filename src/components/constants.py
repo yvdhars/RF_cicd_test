@@ -40,8 +40,9 @@ def create_folders(folders):
 
 config = YamlLoader('src/config/config.yaml')
 config = config.data
-required_folders = [os.path.join(cwd, Path(config.ModelAssets.common_dir.replace("start_time", start_time)))]
-create_folders(required_folders)
+if config.save_data:
+    required_folders = [os.path.join(cwd, Path(config.ModelAssets.common_dir.replace("start_time", start_time)))]
+    create_folders(required_folders)
 
 
 

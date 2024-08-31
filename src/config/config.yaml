@@ -4,6 +4,9 @@ data:
 
 
 
+save_data: false
+experiment_name: 'RF_CICD_PIPELINE'
+
 
 ModelAssets:
   dir: 'model_assets'
